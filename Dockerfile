@@ -63,7 +63,7 @@ RUN gem install cf-uaac --no-rdoc --no-ri
 
 RUN cd /usr/local/bin && wget -q -O om \
     "$(curl -s https://api.github.com/repos/pivotal-cf/om/releases/latest \
-    |jq --raw-output '.assets[] | .browser_download_url' | grep linux)" && chmod +x om 
+    |jq --raw-output '.assets[] | .browser_download_url' | grep linux | grep -v tar.gz)" && chmod +x om 
 
 RUN cd /usr/local/bin && wget -q -O fly \
     "$(curl -s https://api.github.com/repos/concourse/fly/releases/latest \
